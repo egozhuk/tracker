@@ -1,33 +1,18 @@
-const cacheName = 'my-pwa-cache-v1';
-
-const filesToCache = [
-  '/',
-  'index.html',
-  'stats.html',
-  'styles.css',
-  'stats.css',
-  'main.js',
-  'stats.js',
-  'icon.png',
-  'graph.png'
-];
-
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(cacheName).then((cache) => {
-      return cache.addAll(filesToCache);
-    })
-  );
-});
-
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((keyList) => {
-      return Promise.all(keyList.map((key) => {
-        if (key !== cacheName) {
-          return caches.delete(key);
-        }
-      }));
+    caches.open('tracker-app-cache').then((cache) => {
+      return cache.addAll([
+        '/',
+        '/index.html',
+        '/stats.html',
+        '/styles.css',
+        '/stats.css',
+        '/main.js',
+        '/stats.js',
+        '/manifest.json',
+        'graph.png',
+        'icon.png'
+      ]);
     })
   );
 });
