@@ -29,7 +29,7 @@ function getLastSevenDays() {
 function renderChart(data) {
     const ctx = document.getElementById('tracker-chart').getContext('2d');
 
-    const labels = getLastSevenDays(); // Получаем метки с датами
+    const labels = getLastSevenDays();
 
     const chart = new Chart(ctx, {
         type: 'bar',

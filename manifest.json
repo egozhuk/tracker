@@ -1,0 +1,16 @@
+{
+    "name": "Trackers",
+    "short_name": "Trackers",
+    "description": "Приложение для трекинга всего",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#333333",
+    "icons": [
+        {
+            "src": "icon.png",
+            "sizes": "400x400",
+            "type": "image/png"
+        }
+    ]
+}
