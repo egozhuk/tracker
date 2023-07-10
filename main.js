@@ -1,14 +1,14 @@
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
-        .then((registration) => {
-          console.log('Service Worker зарегистрирован:', registration);
-        })
-        .catch((error) => {
-          console.log('Ошибка регистрации Service Worker:', error);
-        });
+        navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+                console.log('Service Worker зарегистрирован:', registration);
+            })
+            .catch((error) => {
+                console.log('Ошибка регистрации Service Worker:', error);
+            });
     });
-  }
+}
 
 function saveTrackers() {
     const trackers = [];
@@ -101,8 +101,14 @@ function addTracker(title, unit, count = 0) {
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Удалить';
     deleteButton.addEventListener('click', () => {
-        listItem.remove();
-        saveTrackers();
+        // Запрашиваем подтверждение удаления
+        const shouldDelete = confirm('Вы уверены, что хотите удалить этот элемент?');
+
+        // Если подтверждение получено, удаляем элемент и сохраняем изменения
+        if (shouldDelete) {
+            listItem.remove();
+            saveTrackers();
+        }
     });
     listItem.appendChild(deleteButton);
 
