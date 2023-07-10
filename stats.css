@@ -24,3 +24,22 @@ h2 {
     border-bottom: 1px solid #53554c;
     padding-bottom: 0.5rem;
 }
+
+@media (max-width: 767px) {
+    main {
+        padding: 1rem;
+    }
+
+    #add-movie-form {
+        flex-direction: column;
+    }
+
+    #add-movie-form input {
+        margin-right: 0;
+        width: 100%;
+    }
+
+    #add-movie-form button {
+        width: 100%;
+    }
+}

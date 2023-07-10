@@ -88,3 +88,22 @@ h2 {
 #trackers-list li:last-child {
     margin-bottom: 0;
 }
+
+@media (max-width: 767px) {
+    main {
+        padding: 1rem;
+    }
+
+    #add-movie-form {
+        flex-direction: column;
+    }
+
+    #add-movie-form input {
+        margin-right: 0;
+        width: 100%;
+    }
+
+    #add-movie-form button {
+        width: 100%;
+    }
+}
