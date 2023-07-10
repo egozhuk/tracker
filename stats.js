@@ -32,14 +32,14 @@ function renderChart(data) {
     const labels = getLastSevenDays(); // Получаем метки с датами
 
     const chart = new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
         data: {
             labels: labels,
             datasets: [{
                 label: 'Количество выполнений',
                 data: data,
                 borderColor: 'rgba(75, 192, 192, 1)',
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                backgroundColor: 'rgba(75, 192, 192, 0.8)',
                 tension: 0.1
             }]
         },
