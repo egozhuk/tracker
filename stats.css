@@ -21,6 +21,7 @@ main {
 }
 
 h2 {
+    text-align: center;
     border-bottom: 1px solid #53554c;
     padding-bottom: 0.5rem;
 }
