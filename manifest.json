@@ -1,11 +1,11 @@
 {
-    "name": "Trackers",
-    "short_name": "Trackers",
-    "description": "Приложение для трекинга всего",
+    "name": "Tracker App",
+    "short_name": "TrackerApp",
+    "description": "Простое приложение для отслеживания выполнения задач",
     "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#ffffff",
-    "theme_color": "#333333",
+    "theme_color": "#4a8af4",
     "icons": [
         {
             "src": "icon.png",
