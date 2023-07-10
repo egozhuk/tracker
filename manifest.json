@@ -2,7 +2,7 @@
     "name": "Trackers",
     "short_name": "Trackers",
     "description": "Приложение для трекинга всего",
-    "start_url": "/",
+    "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#333333",
