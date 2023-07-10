@@ -1,0 +1,26 @@
+body {
+    font-family: 'Times New Roman', Times, serif, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #53554c;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+h1 {
+    margin: 0;
+}
+
+main {
+    padding: 2rem;
+}
+
+h2 {
+    border-bottom: 1px solid #53554c;
+    padding-bottom: 0.5rem;
+}
