@@ -6,8 +6,6 @@ const filesToCache = [
   '/stats.html',
   '/styles.css',
   '/stats.css',
-  '/main.js',
-  '/stats.js',
   '/manifest.json',
   'graph.png',
   'icon.png'
