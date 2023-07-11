@@ -79,10 +79,16 @@ function addTracker(id, title, unit, count = 0) {
     const addButton = document.createElement('button');
     addButton.textContent = '+';
     addButton.addEventListener('click', () => {
-        count++;
-        numberOfCompletions.textContent = count;
-        saveTrackers();
-        saveExecutionData(id, title, new Date(), 1);
+        const incrementValue = parseInt(prompt('Введите число, которое хотите добавить:', 1), 10);
+
+        if (!isNaN(incrementValue)) {
+            count += incrementValue;
+            numberOfCompletions.textContent = count;
+            saveTrackers();
+            saveExecutionData(id, title, new Date(), incrementValue);
+        } else {
+            alert('Пожалуйста, введите корректное число.');
+        }
     });
     listItem.appendChild(addButton);
 
