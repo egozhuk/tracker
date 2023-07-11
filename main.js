@@ -79,10 +79,9 @@ function addTracker(id, title, unit, count = 0) {
     const addButton = document.createElement('button');
     addButton.textContent = '+';
     addButton.addEventListener('click', () => {
-        const inputValue = prompt('Введите число, которое хотите добавить:', 1);
+        const inputValue = prompt('Введите число, которое хотите добавить(если вы случайно ввели дополнительные выполнения, вы можете их удалить введя отрицательное число):', 1);
 
         if (inputValue === null) {
-            // Закрываем диалоговое окно, если пользователь нажал "Отмена"
             return;
         }
 
