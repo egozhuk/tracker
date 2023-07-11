@@ -1,5 +1,5 @@
-function loadExecutionData(title) {
-    const executionsKey = `${title}-executions`;
+function loadExecutionData(id, title) {
+    const executionsKey = `${id}-${title}-executions`;
     const savedData = JSON.parse(localStorage.getItem(executionsKey)) || [];
     const lastSevenDays = getLastSevenDays();
 
@@ -55,6 +55,7 @@ function renderChart(data) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
     const name = urlParams.get('name') || 'не указано';
     const count = urlParams.get('count') || 'не указано';
 
@@ -64,6 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const trackerCountElement = document.getElementById('tracker-count');
     trackerCountElement.textContent += count;
 
-    const data = loadExecutionData(name);
+    const data = loadExecutionData(id, name);
     renderChart(data);
 });

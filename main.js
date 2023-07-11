@@ -10,15 +10,20 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+function generateUniqueId() {
+    return '_' + Math.random().toString(36).substr(2, 9);
+}
+
 function saveTrackers() {
     const trackers = [];
 
     trackersList.querySelectorAll('li').forEach(listItem => {
+        const id = listItem.dataset.id;
         const title = listItem.querySelector('.tracker-text').textContent;
         const unit = listItem.querySelector('.tracker-unit').textContent.replace(/[()]/g, '');
         const count = Number(listItem.querySelector('label').textContent);
 
-        trackers.push({ title, unit, count });
+        trackers.push({ id, title, unit, count });
     });
 
     localStorage.setItem('trackers', JSON.stringify(trackers));
@@ -29,13 +34,14 @@ function loadTrackers() {
 
     if (Array.isArray(trackers)) {
         trackers.forEach(tracker => {
-            addTracker(tracker.title, tracker.unit, tracker.count);
+            const id = tracker.id || generateUniqueId();
+            addTracker(id, tracker.title, tracker.unit, tracker.count);
         });
     }
 }
 
-function saveExecutionData(title, date, count) {
-    const executionsKey = `${title}-executions`;
+function saveExecutionData(id, title, date, count) {
+    const executionsKey = `${id}-${title}-executions`;
     const savedData = JSON.parse(localStorage.getItem(executionsKey)) || [];
     const formattedDate = date.toLocaleDateString('ru-RU');
 
@@ -52,8 +58,9 @@ function saveExecutionData(title, date, count) {
 
 
 
-function addTracker(title, unit, count = 0) {
+function addTracker(id, title, unit, count = 0) {
     const listItem = document.createElement('li');
+    listItem.dataset.id = id;
 
     const trackerText = document.createElement('span');
     trackerText.className = 'tracker-text';
@@ -75,7 +82,7 @@ function addTracker(title, unit, count = 0) {
         count++;
         numberOfCompletions.textContent = count;
         saveTrackers();
-        saveExecutionData(title, new Date(), 1);
+        saveExecutionData(id, title, new Date(), 1);
     });
     listItem.appendChild(addButton);
 
@@ -94,17 +101,15 @@ function addTracker(title, unit, count = 0) {
     statsButton.appendChild(statsImage);
     statsButton.addEventListener('click', () => {
         const countValue = count;
-        window.location.href = `./stats.html?name=${title}&count=${countValue}`;
+        window.location.href = `./stats.html?id=${id}&name=${title}&count=${countValue}`;
     });
     listItem.appendChild(statsButton);
 
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Удалить';
     deleteButton.addEventListener('click', () => {
-        // Запрашиваем подтверждение удаления
         const shouldDelete = confirm('Вы уверены, что хотите удалить этот элемент?');
 
-        // Если подтверждение получено, удаляем элемент и сохраняем изменения
         if (shouldDelete) {
             listItem.remove();
             saveTrackers();
