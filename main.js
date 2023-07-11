@@ -134,7 +134,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const unit = e.target.querySelector('select').value;
 
         if (title) {
-            addTracker(title, unit);
+            const id = generateUniqueId();
+            addTracker(id, title, unit);
             saveTrackers();
             trackerTitle.value = '';
         }
