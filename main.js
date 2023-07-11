@@ -99,7 +99,7 @@ function addTracker(id, title, unit, count = 0) {
     
     addButton.addEventListener('touchstart', (e) => {
         incrementCount();
-        intervalId = setInterval(incrementCount, 200);
+        intervalId = setInterval(incrementCount, 500);
     });
     
     addButton.addEventListener('touchend', () => {
