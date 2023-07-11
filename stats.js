@@ -36,7 +36,7 @@ function renderChart(data) {
         data: {
             labels: labels,
             datasets: [{
-                label: 'Количество выполнений',
+                label: 'Количество',
                 data: data,
                 borderColor: 'rgba(75, 192, 192, 1)',
                 backgroundColor: 'rgba(75, 192, 192, 0.8)',
