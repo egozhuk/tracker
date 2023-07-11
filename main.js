@@ -78,12 +78,34 @@ function addTracker(id, title, unit, count = 0) {
 
     const addButton = document.createElement('button');
     addButton.textContent = '+';
-    addButton.addEventListener('click', () => {
+    
+    let intervalId;
+    
+    function incrementCount() {
         count++;
         numberOfCompletions.textContent = count;
         saveTrackers();
         saveExecutionData(id, title, new Date(), 1);
+    }
+    
+    addButton.addEventListener('mousedown', () => {
+        incrementCount();
+        intervalId = setInterval(incrementCount, 200);
     });
+    
+    addButton.addEventListener('mouseup', () => {
+        clearInterval(intervalId);
+    });
+    
+    addButton.addEventListener('touchstart', (e) => {
+        incrementCount();
+        intervalId = setInterval(incrementCount, 200);
+    });
+    
+    addButton.addEventListener('touchend', () => {
+        clearInterval(intervalId);
+    });
+    
     listItem.appendChild(addButton);
 
     const statsButton = document.createElement('button');
