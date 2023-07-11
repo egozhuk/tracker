@@ -79,7 +79,14 @@ function addTracker(id, title, unit, count = 0) {
     const addButton = document.createElement('button');
     addButton.textContent = '+';
     addButton.addEventListener('click', () => {
-        const incrementValue = parseInt(prompt('Введите число, которое хотите добавить:', 1), 10);
+        const inputValue = prompt('Введите число, которое хотите добавить:', 1);
+
+        if (inputValue === null) {
+            // Закрываем диалоговое окно, если пользователь нажал "Отмена"
+            return;
+        }
+
+        const incrementValue = parseInt(inputValue, 10);
 
         if (!isNaN(incrementValue)) {
             count += incrementValue;
@@ -87,7 +94,9 @@ function addTracker(id, title, unit, count = 0) {
             saveTrackers();
             saveExecutionData(id, title, new Date(), incrementValue);
         } else {
-            alert('Пожалуйста, введите корректное число.');
+            if (inputValue !== "") {
+                alert('Пожалуйста, введите корректное число.');
+            }
         }
     });
     listItem.appendChild(addButton);
