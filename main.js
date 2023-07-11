@@ -67,14 +67,14 @@ function addTracker(id, title, unit, count = 0) {
     trackerText.textContent = title;
     listItem.appendChild(trackerText);
 
+    const numberOfCompletions = document.createElement('label');
+    numberOfCompletions.textContent = count;
+    listItem.appendChild(numberOfCompletions);
+
     const trackerUnit = document.createElement('span');
     trackerUnit.className = 'tracker-unit';
     trackerUnit.textContent = unit;
     listItem.appendChild(trackerUnit);
-
-    const numberOfCompletions = document.createElement('label');
-    numberOfCompletions.textContent = count;
-    listItem.appendChild(numberOfCompletions);
 
     const addButton = document.createElement('button');
     addButton.textContent = '+';
