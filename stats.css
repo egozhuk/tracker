@@ -3,6 +3,10 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
+    -webkit-user-select: none; /* Chrome, Safari, Opera */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer, Edge */
+    user-select: none; /* Стандартное свойство */
 }
 
 header {
